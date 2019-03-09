@@ -2,9 +2,9 @@ const boards = require('../controllers/boards.js');
 const path = require('path');
 
 module.exports = function(app){
-    // app.post('/api/add', function(req, res) {
-    //    boards.add(req, res);
-    // })
+    app.post('/api/addSong', function(req, res) {
+       boards.addSong(req, res);
+    })
     // app.get('/api/show', function(req, res) {
     //     boards.show(req, res);
     // })

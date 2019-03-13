@@ -2,7 +2,7 @@
 // var Restaurant = mongoose.model('Restaurant');
 // var Review = mongoose.model('Review');
 var auth = require('../config/auth');
-
+var request = require('request');
 
 module.exports = {
     addSong: function(req,res){
@@ -17,6 +17,7 @@ module.exports = {
                     res.json(data);
                 }
         });
+        console.log("Controller", JSON.stringify(req.body))
     }
 //     add: function(req, res){
 //        Restaurant.create(req.body, function(err, data){

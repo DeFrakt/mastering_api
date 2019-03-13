@@ -6,6 +6,7 @@ const flash = require('express-flash');
 var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
+const cors = require('cors');
 require('./server/config/mongoose.js');
 // use & set
 app.use(express.static( __dirname + '/public/dist/public' ));
@@ -18,7 +19,8 @@ app.use(session({
     saveUninitialized: false,
     cookie: { maxAge: 60000 }
   }))
-
+//use CORS
+app.use(cors());
 app.set('view engine', 'ejs');
 app.listen(8000, function() {
     console.log("listening on port 8000");

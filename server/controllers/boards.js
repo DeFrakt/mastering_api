@@ -6,10 +6,17 @@ var request = require('request');
 
 module.exports = {
     addSong: function(req,res){
+        console.log("inputfile: ", req.body.files.input_file);
+        console.log("preset: ", req.body.data.preset);
+        console.log("title: ", req.body.data.title);
+        console.log("action: ", req.body.data.action);
         request.post({
             headers: {'Content-type' : 'application/json', 'Authorization': 'Basic ' + auth()},
             url: 'https://auphonic.com/api/simple/productions.json',
-            body: JSON.stringify(req.body)
+            input_file: req.body.files.input_file,
+            preset: req.body.data.preset,
+            title: req.body.data.title,
+            action: req.body.data.action
             }, function(err, data){
                 if(err){
                     res.json(err);
@@ -17,7 +24,6 @@ module.exports = {
                     res.json(data);
                 }
         });
-        console.log("Controller", JSON.stringify(req.body))
     }
 //     add: function(req, res){
 //        Restaurant.create(req.body, function(err, data){
